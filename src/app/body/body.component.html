@@ -1,0 +1,13 @@
+<div class="container">
+    <h2 *ngIf="!productsLoaded">Click "Get Products" for our future products</h2>
+    <div *ngIf="productsLoaded" class="products-container">
+      <h1>Our Products</h1>
+      <div class="data-list" *ngFor="let x of data" (click)="showProduct(x)">
+        {{ x }}
+      </div>
+    </div>
+    <button class="get--data" (click)="getArraydata()">Get Products</button>
+  </div>
+  <article>
+    <app-prodect [selectedCategory]="selectedCategory" [selectedProducts]="selectedProducts"></app-prodect>
+  </article>

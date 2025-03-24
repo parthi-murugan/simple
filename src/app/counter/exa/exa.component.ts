@@ -15,9 +15,6 @@ export class ExaComponent  {
   @Input() main: Main | undefined;
 
   constructor(private counterService: counterService) {}
-
- 
-
   onClick1() {
     this.counterService.me('HI'); 
   }
