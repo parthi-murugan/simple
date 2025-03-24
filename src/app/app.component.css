@@ -1,0 +1,66 @@
+bg{
+    background-color: #588fc7;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-list {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  color: #333;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1.1em;
+  font-family: 'Arial', sans-serif;
+}
+
+.data-list:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.data-list p {
+  margin: 0;
+  padding: 0;
+}
+
+.get--data {
+    background-color: #407c4250; /* Green background */
+    color: white; /* White text */
+    border: 2px solid #4caf50; /* Green border */
+    padding: 10px 20px; /* Padding */
+    font-size: 1.2em; /* Font size */
+    font-family: 'Arial', sans-serif; /* Font family */
+    cursor: pointer; /* Pointer cursor */
+    border-radius: 5px; /* Rounded corners */
+    margin: 20px 0; /* Margin */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Transition effects */
+  }
+  
+  .get--data:hover {
+    background-color: #45a049; /* White background on hover */
+    color: #fcfcfc; /* Green text on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+  }
+  
+  .get--data:active {
+    background-color: #45a049; /* Darker green background on active */
+    border-color: #45a049; /* Darker green border on active */
+    transform: scale(1); /* Reset scale on active */
+  }
+  
+  .get--data:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.5); /* Green focus ring */
+  }

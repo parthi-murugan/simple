@@ -1,0 +1,85 @@
+h1 {
+  font-size: 2.5em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for buttons */
+button {
+  background-color: #80b4a5;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-family: "Times New Roman", Times, serif;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #b33300;
+}
+
+button:active {
+  background-color: #0fc7ff;
+}
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+form input,
+form textarea {
+  width: 95%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #63a2aa;
+  outline: none;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 8px;
+}
+.submit--btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.for--item-loop {
+  background-color: #80b4a5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.for--item-loop:hover {
+  transform: translateY(-20px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.for--item-loop p {
+  margin: 0;
+  font-size: 1.1em;
+  font-family: "Times New Roman", Times, serif;
+  color: #ffffff;
+
+}

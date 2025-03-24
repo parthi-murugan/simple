@@ -1,0 +1,63 @@
+:\Users\Parthi\Desktop\Frontend_FW\Angular\simple\src\app\counter\exa\exa.component.css 
+
+.unique-btn {
+  background: linear-gradient(45deg, #ff6b6b, #f06595);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+  border-radius: 50px;
+  margin: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.unique-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.unique-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.unique-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.5);
+}
+
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #ff6b6b;
+  outline: none;
+}
