@@ -1,31 +1,31 @@
-import { Component,Input ,NgModule} from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { CommonModule, NgFor } from '@angular/common';
 
 import { counterService } from './service/counter.service';
 import { ExaComponent } from './exa/exa.component';
 import { Main } from './models/user.model';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from '../nav/nav.component';
 @Component({
   selector: 'app-counter',
   standalone: true,
   providers: [counterService],
-  imports: [CommonModule, ExaComponent, NavComponent],
+  imports: [CommonModule],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css',
 })
 export class CounterComponent {
   Sam = 'test';
-  summa: any[] = [0,1,2,3,4,5];
+  summa: any[] = [0, 1, 2, 3, 4, 5];
   count = 0;
   incre() {
     this.count++;
   }
   decr() {
-    
+
     this.count--;
   }
-  constructor(private counterService: counterService) {}
+  constructor(private counterService: counterService) { }
   OnCounter() {
     this.counterService.mela('this.count');
   }
@@ -33,10 +33,10 @@ export class CounterComponent {
     this.counterService.name('this.name');
   }
   isVisible = true;
-  main:Main = {
-    name : 'Parthiban',
-    age : 21  
-   
+  main: Main = {
+    name: 'Parthiban',
+    age: 21
+
   };
   // buttonStyles = {
   //   position: 'absolute',
@@ -49,6 +49,6 @@ export class CounterComponent {
   //   border: 'none',
   //   cursor: 'pointer',
   // };
-  
+
 }
 
