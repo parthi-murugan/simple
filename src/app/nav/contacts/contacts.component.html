@@ -1,32 +1,58 @@
-<div>
-  <form [formGroup]="contactForm">
+<div class="contact-form-container">
+  <form class="modern-contact-form" [formGroup]="contactForm">
+    <div class="form-header">
+      <h2>Contact Information</h2>
+      <p>Please fill in your details</p>
+    </div>
+
     <!-- Name Field -->
-    <input formControlName="name" type="text" placeholder="Name">
-    <span *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].invalid">
-      <span *ngIf="contactForm.controls['name'].errors?.['required']">Name is required</span>
-      <span *ngIf="contactForm.controls['name'].errors?.['pattern']">Name must contain only letters</span>
-    </span>
-    <br><br>
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input id="name" class="form-input" formControlName="name" type="text" placeholder="Enter your full name"
+        [ngClass]="{'input-error': contactForm.controls['name'].touched && contactForm.controls['name'].invalid}">
+      <div class="error-message" *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].invalid">
+        <span *ngIf="contactForm.controls['name'].errors?.['required']">Name is required</span>
+        <span *ngIf="contactForm.controls['name'].errors?.['pattern']">Name must contain only letters</span>
+      </div>
+    </div>
 
     <!-- Email Field -->
-    <input formControlName="email" type="email" placeholder="Email">
-    <span *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].invalid">
-      <span *ngIf="contactForm.controls['email'].errors?.['required']">Email is required</span>
-      <span *ngIf="contactForm.controls['email'].errors?.['email']">Invalid Email</span>
-    </span>
-    <br><br>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input id="email" class="form-input" formControlName="email" type="email" placeholder="your.email@example.com"
+        [ngClass]="{'input-error': contactForm.controls['email'].touched && contactForm.controls['email'].invalid}">
+      <div class="error-message" *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].invalid">
+        <span *ngIf="contactForm.controls['email'].errors?.['required']">Email is required</span>
+        <span *ngIf="contactForm.controls['email'].errors?.['email']">Please enter a valid email</span>
+      </div>
+    </div>
 
     <!-- Phone Field -->
-    <input formControlName="phone" type="tel" placeholder="Phone (10 digits)">
-    <span *ngIf="contactForm.controls['phone'].touched && contactForm.controls['phone'].invalid">
-      <span *ngIf="contactForm.controls['phone'].errors?.['required']">Phone is required</span>
-      <span *ngIf="contactForm.controls['phone'].errors?.['pattern']">Must be 10-digit number</span>
-    </span>
-    <br><br>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input id="phone" class="form-input" formControlName="phone" type="tel" placeholder="123-456-7890"
+        [ngClass]="{'input-error': contactForm.controls['phone'].touched && contactForm.controls['phone'].invalid}">
+      <div class="error-message" *ngIf="contactForm.controls['phone'].touched && contactForm.controls['phone'].invalid">
+        <span *ngIf="contactForm.controls['phone'].errors?.['required']">Phone is required</span>
+        <span *ngIf="contactForm.controls['phone'].errors?.['pattern']">Must be 10-digit number</span>
+      </div>
+    </div>
 
-    <button type="submit" (click)="saveData()">Save</button>
-     <br>
-     <br>
-    <button (click)="datas()"> Get Data </button>
+    <div class="form-actions">
+      <button class="submit-btn" type="submit" (click)="saveData()" [disabled]="contactForm.invalid">
+        <span>Save Contact</span>
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+        </svg>
+      </button>
+
+      <button class="secondary-btn" (click)="datas()" type="button">
+        <span>View Contacts</span>
+        <svg class="icon" viewBox="0 0 24 24">
+          <path
+            d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z" />
+        </svg>
+      </button>
+    </div>
   </form>
 </div>
