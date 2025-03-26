@@ -1,21 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProdectComponent } from './prodect/prodect.component';
+
 
 @Component({
-  selector: 'app-body',
+  selector: 'app-prodect',
   standalone: true,
-  imports: [CommonModule, ProdectComponent],
-  templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css']
+  imports: [CommonModule],
+  templateUrl: './prodects.component.html',
+  styleUrls: ['./prodects.component.css'],
 })
-export class BodyComponent {
+export class ProdectComponent {
+  @Input() selectedCategory: string = '';
+  @Input() selectedProducts: any[] = [];
+  router: any;
   data: any[] = ['Shoes', 'Cloths', 'Mobile Phones']; // Initialize your data array
-  selectedCategory: string = ''; // Define selectedCategory property
-  selectedProducts: any[] = []; // Define selectedProducts property
+
   productsLoaded = false; // Define productsLoaded property
 
-  constructor() {}
+  constructor() { }
 
   getArraydata() {
     this.productsLoaded = true; // Set productsLoaded to true when data is loaded

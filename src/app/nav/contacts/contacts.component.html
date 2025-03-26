@@ -1,1 +1,32 @@
-<p>contacts works!</p>
+<div>
+  <form [formGroup]="contactForm">
+    <!-- Name Field -->
+    <input formControlName="name" type="text" placeholder="Name">
+    <span *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].invalid">
+      <span *ngIf="contactForm.controls['name'].errors?.['required']">Name is required</span>
+      <span *ngIf="contactForm.controls['name'].errors?.['pattern']">Name must contain only letters</span>
+    </span>
+    <br><br>
+
+    <!-- Email Field -->
+    <input formControlName="email" type="email" placeholder="Email">
+    <span *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].invalid">
+      <span *ngIf="contactForm.controls['email'].errors?.['required']">Email is required</span>
+      <span *ngIf="contactForm.controls['email'].errors?.['email']">Invalid Email</span>
+    </span>
+    <br><br>
+
+    <!-- Phone Field -->
+    <input formControlName="phone" type="tel" placeholder="Phone (10 digits)">
+    <span *ngIf="contactForm.controls['phone'].touched && contactForm.controls['phone'].invalid">
+      <span *ngIf="contactForm.controls['phone'].errors?.['required']">Phone is required</span>
+      <span *ngIf="contactForm.controls['phone'].errors?.['pattern']">Must be 10-digit number</span>
+    </span>
+    <br><br>
+
+    <button type="submit" (click)="saveData()">Save</button>
+     <br>
+     <br>
+    <button (click)="datas()"> Get Data </button>
+  </form>
+</div>

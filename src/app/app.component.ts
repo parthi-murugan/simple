@@ -1,20 +1,18 @@
 import { Component,NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { NavComponent } from './nav/nav.component';
 
 
 
 
 import { CounterComponent } from './counter/counter.component';
 
-import { BodyComponent } from './body/body.component';
-import { NavComponent } from "./nav/nav.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, CounterComponent, BodyComponent, RouterModule,  NavComponent],
+  imports: [CommonModule, CounterComponent, RouterModule, NavComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

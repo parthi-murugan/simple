@@ -11,7 +11,10 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, ReactiveFormsModule] // Import necessary modules
 })
 export class LoginComponent {
-  @Input() title = 'Login';
+// togglePasswordVisibility() {
+// throw new Error('Method not implemented.');
+// }
+ title = 'Login';
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {
@@ -19,12 +22,23 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-  }
+}
 
   onSubmit() {
+    console.log()
     if (this.loginForm.valid) {
       console.log('Form Submitted:', this.loginForm.value);
       this.router.navigate(['/login']); // Navigate to the login page
     }
   }
+  Login:any;
+  lstrg(){
+    localStorage.setItem('Login', JSON.stringify(this.loginForm.value));
+  }
+  getdata(){
+    let data:any=localStorage.getItem('Login')
+    
+    alert(data)
+  }
 }
+

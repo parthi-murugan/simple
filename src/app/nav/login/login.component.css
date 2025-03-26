@@ -1,85 +1,269 @@
-
-/* General body styling */
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  height: 100vh;
+/* Modern Login Form Styles */
+.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
 }
 
-/* Center the form */
-form {
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.modern-login-form {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
+  transition: transform 0.3s ease;
+}
+
+.modern-login-form:hover {
+  transform: translateY(-5px);
+}
+
+.form-title {
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.floating-input {
+  position: relative;
+}
+
+.floating-input input {
+  width: 100%;
+  padding: 15px 0 5px 0;
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 16px;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.floating-input input:focus {
+  outline: none;
+  border-bottom-color: transparent;
+}
+
+.floating-input label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  color: #718096;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.floating-input input:focus+label,
+.floating-input input:not(:placeholder-shown)+label {
+  top: 0;
+  font-size: 12px;
+  color: #4a5568;
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.4s ease;
+}
+
+.floating-input input:focus~.underline {
+  width: 100%;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.toggle-password:hover {
+  opacity: 1;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #4a5568;
+}
+
+.remember-me input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  position: relative;
+}
+
+.remember-me input:checked~.checkmark {
+  background-color: #667eea;
+  border-color: #667eea;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.remember-me input:checked~.checkmark:after {
+  display: block;
+}
+
+.forgot-password {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.forgot-password:hover {
+  color: #764ba2;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover svg {
+  transform: translateX(5px);
+}
+
+.social-login {
+  margin: 30px 0;
   text-align: center;
 }
 
-/* Form title */
-form h1 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  color: #333;
+.social-login p {
+  color: #718096;
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
-/* Input fields */
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 0.8rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
+.social-login p:before,
+.social-login p:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background: #e2e8f0;
 }
 
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: #6a11cb;
-  outline: none;
+.social-login p:before {
+  left: 0;
 }
 
-/* Submit button */
-button[type="submit"] {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: #fff;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
+.social-login p:after {
+  right: 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: white;
   cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-button[type="submit"]:hover {
-  background: linear-gradient(135deg, #2575fc, #6a11cb);
+.social-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Labels */
-label {
-  display: block;
-  text-align: left;
-  margin-bottom: 0.3rem;
-  font-size: 0.9rem;
-  color: #555;
+.social-btn img {
+  width: 20px;
+  height: 20px;
 }
 
-/* Responsive design */
-@media (max-width: 480px) {
-  form {
-    padding: 1.5rem;
-  }
+.signup-link {
+  text-align: center;
+  color: #718096;
+  font-size: 14px;
+}
 
-  button[type="submit"] {
-    width: 100%;
-  }
+.signup-link a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.signup-link a:hover {
+  color: #764ba2;
 }
