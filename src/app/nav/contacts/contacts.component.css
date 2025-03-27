@@ -1,144 +1,426 @@
-/* Modern Contact Form Styles */
+/* Ultra-Modern Contact Form with Emojis & Visual Enhancements */
+:root {
+  --primary-gradient: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
+  --secondary-gradient: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+  --accent-color: #6e45e2;
+  --dark-bg: #0f0e17;
+  --card-bg: rgba(255, 255, 255, 0.98);
+  --text-light: #ffffff;
+  --text-dark: #2b2c34;
+  --success-color: #00d1b2;
+  --error-color: #ff3860;
+  --glass-effect: rgba(255, 255, 255, 0.2);
+  --neon-shadow: 0 0 15px rgba(110, 69, 226, 0.5);
+}
+
+/* === FORM CONTAINER === */
 .contact-form-container {
   display: flex;
   justify-content: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  align-items: center;
   min-height: 100vh;
+  padding: 2rem;
+  background: var(--dark-bg);
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(110, 69, 226, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(136, 211, 206, 0.15) 0%, transparent 40%);
 }
 
+/* === FORM CARD (GLASS EFFECT) === */
 .modern-contact-form {
   width: 100%;
-  max-width: 500px;
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  max-width: 600px;
+  background: var(--card-bg);
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.3),
+    var(--neon-shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid var(--glass-effect);
 }
 
+/* Rotating Gradient Background Effect */
+.modern-contact-form::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: var(--primary-gradient);
+  opacity: 0.1;
+  z-index: -1;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hover Effect */
 .modern-contact-form:hover {
   transform: translateY(-5px);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(110, 69, 226, 0.6);
 }
 
+/* === FORM HEADER === */
 .form-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .form-header h2 {
-  color: #2c3e50;
-  font-size: 1.8rem;
+  color: var(--text-dark);
+  font-size: 2.4rem;
   margin-bottom: 0.5rem;
+  font-weight: 800;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
 }
 
 .form-header p {
-  color: #7f8c8d;
-  font-size: 0.9rem;
+  color: #4a4a4a;
+  font-size: 1.1rem;
+  letter-spacing: 0.2px;
+  margin-top: 1rem;
 }
 
+/* === FORM INPUTS === */
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  color: #2c3e50;
-  font-weight: 500;
-  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.2px;
 }
 
 .form-input {
   width: 100%;
-  padding: 0.8rem 1rem;
-  border: 1px solid #dfe6e9;
-  border-radius: 8px;
+  padding: 1.2rem 1.2rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background-color: #f8f9fa;
+  background: white;
+  color: var(--text-dark);
+  font-weight: 500;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-align: center;
+}
+
+.form-input::placeholder {
+  color: #a7a7a7;
+  font-weight: 400;
 }
 
 .form-input:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-  background-color: white;
+  border-color: var(--accent-color);
+  box-shadow:
+    0 0 0 4px rgba(110, 69, 226, 0.2),
+    0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Error State */
 .input-error {
-  border-color: #e74c3c;
-  background-color: rgba(231, 76, 60, 0.05);
+  border-color: var(--error-color);
+  background-color: rgba(255, 56, 96, 0.03);
 }
 
 .error-message {
-  color: #e74c3c;
-  font-size: 0.8rem;
-  margin-top: 0.3rem;
-  height: 1rem;
+  color: var(--error-color);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: block;
+  font-weight: 500;
 }
 
+/* === BUTTONS === */
+/* === ULTRA-MODERN FORM ACTIONS === */
 .form-actions {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
 
-.submit-btn,
-.secondary-btn {
-  display: flex;
+/* Base Button Styles */
+.form-action-btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.5rem;
+  gap: 0.8rem;
+  padding: 1.2rem 2rem;
   border: none;
-  border-radius: 8px;
-  font-weight: 500;
+  border-radius: 12px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.submit-btn {
-  background-color: #3498db;
+/* Primary Action Button (Save/Update) */
+.submit-action-btn {
+  background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
   color: white;
+  position: relative;
 }
 
-.submit-btn:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
+.submit-action-btn::before {
+  content: "";
+  /* Floppy disk emoji for save */
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
 }
 
-.submit-btn:disabled {
-  background-color: #bdc3c7;
+.submit-action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 25px rgba(110, 69, 226, 0.4),
+    0 0 15px rgba(136, 211, 206, 0.3);
+  background: linear-gradient(135deg, #7d55e8 0%, #94d9d3 100%);
+}
+
+.submit-action-btn:active {
+  transform: translateY(1px);
+}
+
+.submit-action-btn:disabled {
+  background: #e0e0e0;
+  color: #a0a0a0;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
-.secondary-btn {
-  background-color: white;
-  color: #3498db;
-  border: 1px solid #3498db;
+.submit-action-btn:disabled::before {
+  content: "⛔";
+  /* No entry emoji when disabled */
 }
 
-.secondary-btn:hover {
-  background-color: #f8f9fa;
+/* Secondary Action Button (View/Hide Contacts) */
+.toggle-view-btn {
+  background: white;
+  color: #6e45e2;
+  border: 2px solid #6e45e2;
+  position: relative;
+}
+
+.toggle-view-btn::before {
+  content: "";
+  /* Eye emoji for view */
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.toggle-view-btn:hover {
+  background: rgba(110, 69, 226, 0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Dynamic emoji change based on state */
+.toggle-view-btn[data-state="hide"]::before {
+  content: "🙈";
+  /* See-no-evil monkey when hiding */
+}
+
+/* Button Icons */
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.submit-action-btn:hover .btn-icon {
+  transform: translateX(3px) scale(1.1);
+}
+
+.toggle-view-btn:hover .btn-icon {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .form-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-action-btn {
+    padding: 1rem;
+  }
+}
+/* === TABLE STYLES (With Emojis) === */
+.contacts-table-container {
+  margin: 4rem auto;
+  max-width: 1200px;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.contacts-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.contacts-table th,
+.contacts-table td {
+  padding: 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.contacts-table th {
+  background: linear-gradient(to right, #f3f3f3, white);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  color: #4a4a4a;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.contacts-table tr:hover td {
+  background: rgba(110, 69, 226, 0.03);
+}
+
+.no-contacts {
+  text-align: center;
+  padding: 3rem;
+  color: #7a7a7a;
+  font-size: 1.2rem;
+}
+
+/* === ACTION BUTTONS (With Emojis) === */
+.edit-btn,
+.delete-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin: 0 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Edit Button (With Pencil Emoji ✏️) */
+.edit-btn {
+  background: linear-gradient(135deg, #00d1b2 0%, #00c4a7 100%);
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 209, 178, 0.3);
+}
+
+.edit-btn::before {
+  content: "✏️";
+  margin-right: 0.3rem;
+}
+
+.edit-btn:hover {
+  background: linear-gradient(135deg, #00c4a7 0%, #00b89b 100%);
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 209, 178, 0.4);
 }
 
-.icon {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
+/* Delete Button (With Trash Bin Emoji 🗑️) */
+.delete-btn {
+  background: linear-gradient(135deg, #ff3860 0%, #ff2b56 100%);
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 56, 96, 0.3);
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
+.delete-btn::before {
+  content: "🗑️";
+  margin-right: 0.3rem;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(135deg, #ff2b56 0%, #ff1f4b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 56, 96, 0.4);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
   .modern-contact-form {
-    padding: 1.5rem;
+    padding: 2.5rem;
+    border-radius: 20px;
   }
 
   .form-actions {
     flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contacts-table-container {
+    padding: 1.5rem;
+  }
+
+  .contacts-table th,
+  .contacts-table td {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-contact-form {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .form-header h2 {
+    font-size: 2rem;
+  }
+
+  .form-header p {
+    font-size: 1rem;
+  }
+
+  .submit-btn,
+  .secondary-btn {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .contacts-table-container {
+    padding: 1rem;
   }
 }

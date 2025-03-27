@@ -35,10 +35,5 @@ export class LoginComponent {
   lstrg(){
     localStorage.setItem('Login', JSON.stringify(this.loginForm.value));
   }
-  getdata(){
-    let data:any=localStorage.getItem('Login')
-    
-    alert(data)
-  }
 }
 

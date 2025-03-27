@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
-import { FormsModule, FormGroup, ReactiveFormsModule, NgForm, FormControl, Validators, FormBuilder } from '@angular/forms';
 @Component({
-  selector: 'app-contacts',
-  standalone : true,
-  imports: [ReactiveFormsModule , FormsModule,CommonModule],
+  selector: 'app-contact-form',
+  standalone :true,
+  imports : [CommonModule, ReactiveFormsModule],
   templateUrl: './contacts.component.html',
-  styleUrl: './contacts.component.css'
+  styleUrls: ['./contacts.component.css']
 })
-export class ContactsComponent {
-
-
-  contactForm!: FormGroup
+export class ContactFormComponent implements OnInit {
+  contactForm: FormGroup;
+  contacts: any[] = [];
+  showContacts = false;
+  isEditMode = false;
+  currentEditId: number | null = null;
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
@@ -22,55 +24,63 @@ export class ContactsComponent {
     });
   }
 
-
-  submit()  {
-
-    this.contactForm.markAllAsTouched();
-
-    if (this.contactForm.valid) {
-
-      console.log('Form submitted:', this.contactForm.value);
-
-    } else {
-        console.log('Invalid Form',);
+  ngOnInit(): void {
+    const savedContacts = localStorage.getItem('contacts');
+    if (savedContacts) {
+      this.contacts = JSON.parse(savedContacts);
     }
+  }
 
-
-}
-
-  saveData(): void {
-    const isValid = this.submit();
-
+  saveData() {
     if (this.contactForm.valid) {
+      const formData = this.contactForm.value;
 
-      const formValue = this.contactForm.value;
-      const hasEmptyValues = Object.values(formValue).some(val => val === '' || val === null);
+      if (this.isEditMode && this.currentEditId !== null) {
 
-      if (!hasEmptyValues) {
-        localStorage.setItem('Users', JSON.stringify(formValue));
-        alert('Data has been saved successfully!');
-        this.contactForm.reset(); 
+        this.contacts[this.currentEditId] = formData;
+        this.isEditMode = false;
+        this.currentEditId = null;
       } else {
-        console.error('Cannot save empty values to localStorage');
-        alert('Please fill all required fields');
+
+        this.contacts.push(formData);
       }
-    } else {
-      console.error('Form is invalid');
-      alert('Please correct the errors in the form');
+      localStorage.setItem('contacts', JSON.stringify(this.contacts));
+
+      this.contactForm.reset();
+
+      this.showContacts = true;
     }
   }
 
-
-  datas() {
-   const storedData = localStorage.getItem('Users');
-   alert(storedData)
-   if (storedData) {
-     const parsedData = JSON.parse(storedData);
-     this.contactForm.setValue(parsedData);
-   } else {
-     console.error('No data found in localStorage for key "Users"');
-   }
-  }
+  toggleView() {
+    this.showContacts = !this.showContacts;
   }
 
+  onEdit(contact: any) {
+    const index = this.contacts.indexOf(contact);
+    if (index !== -1) {
+      this.isEditMode = true;
+      this.currentEditId = index;
+      this.contactForm.patchValue({
+        name: contact.name,
+        email: contact.email,
+        phone: contact.phone
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
 
+  onDelete(contact: any) {
+    const index = this.contacts.indexOf(contact);
+    if (index !== -1) {
+      this.contacts.splice(index, 1);
+      localStorage.setItem('contacts', JSON.stringify(this.contacts));
+      
+      if (this.isEditMode && this.currentEditId === index) {
+        this.isEditMode = false;
+        this.currentEditId = null;
+        this.contactForm.reset();
+      }
+    }
+  }
+}

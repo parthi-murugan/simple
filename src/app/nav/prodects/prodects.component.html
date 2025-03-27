@@ -1,28 +1,44 @@
 <div class="product-container" *ngIf="selectedProducts.length > 0">
-  <h3 class="Products">Products for {{ selectedCategory }}</h3>
-  <div class="product-list">
-    <div class="product-item" *ngFor="let product of selectedProducts">
-      <img [src]="product.image" alt="{{ product.name }}" />
-      <h4>{{ product.name }}</h4>
-      <p>{{ product.description }}</p>
-      <p class="price">{{ product.price }}</p>
+  <div class="section-header">
+    <h2 class="section-title">Products for {{ selectedCategory }}</h2>
+    <p class="section-subtitle">Browse our curated collection</p>
+  </div>
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let product of selectedProducts">
+      <div class="product-badge" *ngIf="product.discount">🔥 {{ product.discount }}% OFF</div>
+      <div class="product-image-container">
+        <img [src]="product.image" alt="{{ product.name }}" class="product-image" />
+      </div>
+      <div class="product-details">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="price-section">
+          <span class="current-price">{{ product.price | currency:'INR' }}</span>
+          <span class="original-price" *ngIf="product.originalPrice">{{ product.originalPrice | currency:'INR' }}</span>
+        </div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
     </div>
   </div>
 </div>
-<article>
 
+<article>
   <div class="container">
-    <h2 *ngIf="!productsLoaded">Click "Get Products" for our future products</h2>
-    <div *ngIf="productsLoaded" class="products-container">
-      <h1>Our Products</h1>
-      <div class="data-list" *ngFor="let x of data" (click)="showProduct(x)">
-        {{ x }}
+    <h2 *ngIf="!productsLoaded" class="empty-state">Discover amazing products. Click below to explore!</h2>
+    <div *ngIf="productsLoaded" class="categories-section">
+      <h1 class="categories-title">Shop by Category</h1>
+      <div class="category-tags">
+        <div class="category-tag" *ngFor="let x of data" (click)="showProduct(x)">
+          {{ x }}
+        </div>
       </div>
     </div>
-    <button class="get--data" (click)="getArraydata()">Get Products</button>
+    <button class="load-products-btn" (click)="getArraydata()">
+      <span>Explore Products</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
   </div>
-  <article>
-    <app-prodect [selectedCategory]="selectedCategory" [selectedProducts]="selectedProducts"></app-prodect>
-  </article>
 </article>
-

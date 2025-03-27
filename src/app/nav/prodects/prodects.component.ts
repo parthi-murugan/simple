@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './prodects.component.html',
   styleUrls: ['./prodects.component.css'],
 })
+
 export class ProdectComponent {
   @Input() selectedCategory: string = '';
   @Input() selectedProducts: any[] = [];
@@ -16,6 +17,7 @@ export class ProdectComponent {
   data: any[] = ['Shoes', 'Cloths', 'Mobile Phones']; // Initialize your data array
 
   productsLoaded = false; // Define productsLoaded property
+  products: any;
 
   constructor() { }
 
@@ -47,4 +49,5 @@ export class ProdectComponent {
       this.selectedProducts = [];
     }
   }
+
 }
