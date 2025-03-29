@@ -350,7 +350,7 @@
 }
 
 .edit-btn::before {
-  content: "✏️";
+  content: " ";
   margin-right: 0.3rem;
 }
 
@@ -368,7 +368,7 @@
 }
 
 .delete-btn::before {
-  content: "🗑️";
+  content: "";
   margin-right: 0.3rem;
 }
 

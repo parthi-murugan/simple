@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-contact-form',
-  standalone :true,
-  imports : [CommonModule, ReactiveFormsModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  styleUrls: ['./contacts.component.css'],
 })
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
@@ -20,7 +25,8 @@ export class ContactFormComponent implements OnInit {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      address: ['', [Validators.required]],
     });
   }
 
@@ -36,12 +42,10 @@ export class ContactFormComponent implements OnInit {
       const formData = this.contactForm.value;
 
       if (this.isEditMode && this.currentEditId !== null) {
-
         this.contacts[this.currentEditId] = formData;
         this.isEditMode = false;
         this.currentEditId = null;
       } else {
-
         this.contacts.push(formData);
       }
       localStorage.setItem('contacts', JSON.stringify(this.contacts));
@@ -64,7 +68,8 @@ export class ContactFormComponent implements OnInit {
       this.contactForm.patchValue({
         name: contact.name,
         email: contact.email,
-        phone: contact.phone
+        phone: contact.phone,
+        address: contact.address,
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -75,7 +80,7 @@ export class ContactFormComponent implements OnInit {
     if (index !== -1) {
       this.contacts.splice(index, 1);
       localStorage.setItem('contacts', JSON.stringify(this.contacts));
-      
+
       if (this.isEditMode && this.currentEditId === index) {
         this.isEditMode = false;
         this.currentEditId = null;
